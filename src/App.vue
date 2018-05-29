@@ -6,17 +6,7 @@
         <h1>Todos</h1>
         <input type="text" placeholder="Ajuter une tâche" class="new-todo" v-model="newTodo" @keyup.enter="addTodo()"><!-- a la touche "enter" tu fais la fonctionne "addTodo"-->
       </header>
-      <div class="main">
-        <ul class="todo-list">
-          <li class="todo" v-for="todo in filteredTodos" :class="{completed: todo.completed}">
-            <div class="view"><!-- v-bin:class = :class -->
-              <input type="checkbox" class="toggle" v-model="todo.completed">
-              <label for="">{{ todo.name }}</label>
-              <button class="destroy" @click.prevent="deleteTodo(todo)"></button>
-            </div>
-          </li>
-        </ul>
-      </div>
+      <TodoList :filteredTodos="filteredTodos"/>
       <footer class="footer" v-show="hasTodo">
         <span class="todo-count"><strong>Tâche à faire : {{ remaining }}</strong></span>
         <ul class="filters">
@@ -35,15 +25,20 @@
         </button>
       </footer>
     </section>
-    <p v-for="todo in todos" @click="newTodo = todo.name">
-      {{ todo.completed }}
-    </p>
+    <HelloWorld msg="Hello"/>
   </div>
 </template>
 
 <script>
+import HelloWorld from './components/HelloWorld.vue';
+import TodoList from './components/TodoList.vue';
+
 export default {
   name: "app",
+  components: {
+    HelloWorld,
+    TodoList
+  },
   data() {
     return {
       todos: [{
