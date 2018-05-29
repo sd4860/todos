@@ -26,18 +26,21 @@
       </footer>
     </section>
     <HelloWorld msg="Hello"/>
+    <Posts/>
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue';
 import TodoList from './components/TodoList.vue';
+import Posts from './components/Posts.vue';
 
 export default {
   name: "app",
   components: {
     HelloWorld,
-    TodoList
+    TodoList,
+    Posts
   },
   data() {
     return {
